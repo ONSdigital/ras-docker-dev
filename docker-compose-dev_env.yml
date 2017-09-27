@@ -1,0 +1,12 @@
+version: '2'
+services:
+ ons-postgres:
+  container_name: postgres
+  image: sdcplatform/postgres
+  ports:
+   - "${EX_POSTGRES_PORT}:5432"
+ rabbitmq:
+  container_name: rabbitmq
+  image: rabbitmq:3.6.10-management
+  ports:
+    - "16671-16672:15671-15672"

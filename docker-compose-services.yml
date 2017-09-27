@@ -1,0 +1,44 @@
+version: '2'
+services:
+  party-service:
+    container_name: party-service
+    image: jwgwalton/ras-party
+    ports:
+      - "${PARTY_PORT}:${PARTY_PORT}"
+    external_links:
+      - postgres
+    environment:
+      - ras-party-db.uri=postgres://postgres@${POSTGRES_HOST}:${POSTGRES_PORT}/postgres
+      - oauth2-service.port=8040
+  secure-message-service:
+    container_name: secure-message
+    image: jwgwalton/ras-secure-message
+    ports:
+      - "${SECURE_MESSAGE_PORT}:${SECURE_MESSAGE_PORT}"
+    external_links:
+      - postgres
+    environment:
+      - SECURE_MESSAGING_DATABASE_URL=postgres://postgres@${POSTGRES_HOST}:${POSTGRES_PORT}/postgres
+  frontstage:
+    container_name: frontstage
+    image: jwgwalton/ras-frontstage
+    ports:
+      - "${FRONTSTAGE_PORT}:${FRONTSTAGE_PORT}"
+  collection-instrument-service:
+    container_name: collection-instrument
+    image: jwgwalton/ras-collection-instrument
+    ports:
+      - "${COLLECTION_INSTRUMENT_PORT}:${COLLECTION_INSTRUMENT_PORT}"
+    external_links:
+      - postgres
+      - rabbitmq
+  backstage:
+    container_name: backstage
+    image: jwgwalton/ras-backstage
+    ports:
+      - "${BACKSTAGE_PORT}:${BACKSTAGE_PORT}"
+
+networks:
+  default:
+    external:
+      name: rasdockerdev_default
