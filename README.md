@@ -17,35 +17,6 @@ Docker development environment for RAS
     docker-compose -f docker-compose-ras.yml             //for RAS party and collection-instrument services (Without test data)
     docker-compose -f docker-compose-ras.yml up -d   
 
-# Run up all the RAS components 
-    
-    docker-compose -f docker-compose-dev_env.yml pull
-    docker-compose -f docker-compose-dev_env.yml up -d
-    
-    docker-compose -f docker-compose-services.yml pull
-    docker-compose -f docker-compose-service.yml up -d
-
-# To start all stopped containers
-
-    docker start $(docker ps -a -q)
-
-# To stop all containers
-
-    docker stop $(docker ps -q)
-
-OR
-
-    docker-compose -f docker-compose-services.yml down
-
-# To Delete All images (when no containers exist)
-
-    docker rmi $(docker images -q)
-
-# Delete ALL Containers
-
-    docker rm $(docker ps -a -q)
-
-# Delete Specific Container
-
-    docker stop <CONTAINER_NAME>
-    docker rm <CONTAINER_NAME>
+# Run up all the RAS components with ras-compose.sh
+  ./ras-compose.sh clean : clean build of all containers, pulls latest from docker hub
+  ./ras-compose.sh run   : rebuild and run all containers
