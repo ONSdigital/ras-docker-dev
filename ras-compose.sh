@@ -13,6 +13,7 @@ docker-compose -f docker-compose-services.yml pull
 
 up() {
 docker-compose -f docker-compose-dev_env.yml up -d
+sleep 10
 docker-compose -f docker-compose-services.yml up -d
 }
 
