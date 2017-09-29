@@ -22,17 +22,20 @@ echo "use flags:- clean: pull containers and run, up: rebuild and restart all co
 
 case "$1" in
  up) 
-    down
-    up
-    ;;
+  down
+  up
+  ;;
  clean)
-   down 
-   pull
-   up
-   ;;
+  down 
+  pull
+  up
+  ;;
+ down)
+  down
+  ;;
  *)
-   usage
-   ;;
+  usage
+  ;;
 esac
 
 
