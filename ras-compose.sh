@@ -17,7 +17,7 @@ docker-compose -f docker-compose-services.yml up -d
 }
 
 usage() {
-echo "use flags:- clean: pull containers and run, up: rebuild and restart all containers"
+echo "use flags:- clean: pull containers and run, up: rebuild and restart all containers, down: stop and remove all containers"
 }
 
 case "$1" in

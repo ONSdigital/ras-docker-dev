@@ -18,5 +18,7 @@ Docker development environment for RAS
     docker-compose -f docker-compose-ras.yml up -d   
 
 # Run up all the RAS components with ras-compose.sh
+
   ./ras-compose.sh clean : clean build of all containers, pulls latest from docker hub
   ./ras-compose.sh run   : rebuild and run all containers
+  ./ras-compose.sh down. : stop and remove all containers
