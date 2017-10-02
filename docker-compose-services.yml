@@ -2,7 +2,7 @@ version: '2'
 services:
   api-gateway:
     container_name: api-gateway
-    image: jwgwalton/ras-api-gateway:docker
+    image: jwgwalton/ras-api-gateway
     ports:
       - "${GATEWAY_PORT}:${GATEWAY_PORT}"
     environment:
