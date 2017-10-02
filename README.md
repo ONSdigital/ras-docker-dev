@@ -44,9 +44,9 @@ This is separate as the structure of the application requires it to be able to p
   ```
   git clone https://github.com/ONSdigital/django-oauth2-test.git
   ```
-  Checkout the docker branch (FIXME: REMOVE GIT CHECKOUT WHEN MERGED INTO MASTER)
   
-  within the django-oauth2-test folder
+  Within the django-oauth2-test folder
+  
   ```
   ./ras-compose.sh up: build and run the oauth server
   ```
