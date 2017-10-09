@@ -13,8 +13,14 @@ docker-compose -f docker-compose-services.yml pull
 
 up() {
 docker-compose -f docker-compose-dev_env.yml up -d
-sleep 10
+sleep 20
 docker-compose -f docker-compose-services.yml up -d
+}
+
+populate(){
+  docker cp install_test_data.sql ras-postgres:/install_test_data.sql
+  sleep 10
+  docker exec ras-postgres psql -U postgres -d postgres -f install_test_data.sql
 }
 
 usage() {
@@ -22,14 +28,16 @@ echo "use flags:- clean: pull containers and run, up: rebuild and restart all co
 }
 
 case "$1" in
- up) 
+ up)
   down
   up
+  populate
   ;;
  clean)
-  down 
+  down
   pull
   up
+  populate
   ;;
  down)
   down
@@ -38,5 +46,3 @@ case "$1" in
   usage
   ;;
 esac
-
-
