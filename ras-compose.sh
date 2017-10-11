@@ -17,14 +17,22 @@ sleep 20
 docker-compose -f docker-compose-services.yml up -d
 }
 
-populate(){
+copy_data() {
   docker cp install_test_data.sql ras-postgres:/install_test_data.sql
-  sleep 10
+}
+
+install_data() {
   docker exec ras-postgres psql -U postgres -d postgres -f install_test_data.sql
 }
 
+populate(){
+  copy_data
+  sleep 15
+  install_data
+}
+
 usage() {
-echo "use flags:- clean: pull containers and run, up: rebuild and restart all containers, down: stop and remove all containers"
+echo "use flags:- clean: pull containers and run, up: rebuild and restart all containers, down: stop and remove all containers, populate: populate datbase with test data"
 }
 
 case "$1" in
@@ -41,6 +49,9 @@ case "$1" in
   ;;
  down)
   down
+  ;;
+ populate)
+  install_data
   ;;
  *)
   usage
