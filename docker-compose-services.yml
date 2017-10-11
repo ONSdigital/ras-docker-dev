@@ -48,7 +48,7 @@ services:
     environment:
       -  API_GATEWAY_CASE_URL=http://localhost:8171/cases/
       -  API_GATEWAY_COLLECTION_EXERCISE_URL=http://localhost:8145/collectionexercises/
-      -  API_GATEWAY_SURVEYS_URL=http://localhost:8080/surveys/
+      -  API_GATEWAY_SURVEYS_URL=http://localhost:8085/surveys/
       -  API_GATEWAY_IAC_URL=http://localhost:8121/iacs/
       -  API_GATEWAY_COLLECTION_INSTRUMENT_URL=http://localhost:8082/collection-instrument-api/1.0.2/
       -  API_GATEWAY_AGGREGATED_SURVEYS_URL=http://localhost:8083/api/1.0.0/surveys/
@@ -96,7 +96,7 @@ services:
       - db_port=${POSTGRES_PORT}
       - API_GATEWAY_CASE_URL=http://localhost:8171/cases/
       - API_GATEWAY_COLLECTION_EXERCISE_URL=http://localhost:8145/collectionexercises/
-      - API_GATEWAY_SURVEY_SERVICE_URL=http://localhost:8080/surveys/
+      - API_GATEWAY_SURVEY_SERVICE_URL=http://localhost:8085/surveys/
       - RABBITMQ_AMQP=amqp://guest:guest@localhost:6672
       - SECURITY_USER_NAME=${SECURITY_USER_NAME}
       - SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
