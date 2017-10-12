@@ -22,6 +22,12 @@ services:
       - oauth2-service.port=8040
       - oauth2-service.client_id=ons@ons.gov
       - oauth2-service.client_secret=password
+      - case-service.host=casesvc
+      - collectionexercise-service.host=collex
+      - survey-service.host=survey
+      - api-gateway.host=api-gateway
+      - iac-service.host=iac
+      - oauth2-service.host=oauth2-service
       - SECURITY_USER_NAME=${SECURITY_USER_NAME}
       - SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
     networks:
@@ -78,7 +84,7 @@ services:
       -  RM_COLLECTION_EXERCISE_SERVICE_PORT=8145
       -  RM_COLLECTION_EXERCISE_SERVICE_PROTOCOL=http
       -  RM_SURVEY_SERVICE_HOST=survey
-      -  RM_SURVEY_SERVICE_PORT=8085
+      -  RM_SURVEY_SERVICE_PORT=8080
       -  RM_SURVEY_SERVICE_PROTOCOL=http
       -  FS_DEV_PORT=5001
       -  SECURITY_USER_NAME=${SECURITY_USER_NAME}
@@ -111,6 +117,18 @@ services:
     environment:
       - SECURITY_USER_NAME=${SECURITY_USER_NAME}
       - SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
+    networks:
+      - rasdockerdev_default
+
+  oauth2-service:
+    container_name: oauth2-service
+    image: jwgwalton/django-oauth2-test:docker
+    ports:
+      - 8040:8040
+    environment:
+      - OAUTH2_SUPER_USER=admin
+      - OAUTH2_SUPER_USER_PASSWORD=admin2017
+      - OAUTH2_SUPER_USER_EMAIL=admin@email.com
     networks:
       - rasdockerdev_default
 
