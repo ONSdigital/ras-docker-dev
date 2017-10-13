@@ -32,6 +32,7 @@ services:
       - SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
     networks:
       - rasdockerdev_default
+      - rmdockerdev_default
 
   secure-message-service:
     container_name: secure-message
