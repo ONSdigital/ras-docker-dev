@@ -53,13 +53,13 @@ services:
     ports:
       - "${FRONTSTAGE_PORT}:${FRONTSTAGE_PORT}"
     environment:
-      -  API_GATEWAY_CASE_URL=http://localhost:8171/cases/
-      -  API_GATEWAY_COLLECTION_EXERCISE_URL=http://localhost:8145/collectionexercises/
-      -  API_GATEWAY_SURVEYS_URL=http://localhost:8085/surveys/
-      -  API_GATEWAY_IAC_URL=http://localhost:8121/iacs/
-      -  API_GATEWAY_COLLECTION_INSTRUMENT_URL=http://localhost:8082/collection-instrument-api/1.0.2/
-      -  API_GATEWAY_AGGREGATED_SURVEYS_URL=http://localhost:8083/api/1.0.0/surveys/
-      -  API_GATEWAY_PARTY_URL=http://localhost:8081/party-api/v1/
+      -  API_GATEWAY_CASE_URL=http://casesvc:8171/cases/
+      -  API_GATEWAY_COLLECTION_EXERCISE_URL=http://collex:8145/collectionexercises/
+      -  API_GATEWAY_SURVEYS_URL=http://survey:8080/surveys/
+      -  API_GATEWAY_IAC_URL=http://iac:8121/iacs/
+      -  API_GATEWAY_COLLECTION_INSTRUMENT_URL=http://collection-instrument:8082/collection-instrument-api/1.0.2/
+      -  API_GATEWAY_AGGREGATED_SURVEYS_URL=http://survey:8083/api/1.0.0/surveys/
+      -  API_GATEWAY_PARTY_URL=http://party-service:8081/party-api/v1/
       -  OAUTHLIB_INSECURE_TRANSPORT=1
       -  ONS_OAUTH_PROTOCOL=http
       -  ONS_OAUTH_HOST=oauth2-service
@@ -72,7 +72,7 @@ services:
       -  RAS_COLLECTION_INSTRUMENT_SERVICE_HOST=collection-instrument
       -  RAS_COLLECTION_INSTRUMENT_SERVICE_PORT=8082
       -  RAS_COLLECTION_INSTRUMENT_SERVICE_PROTOCOL=http
-      -  RAS_API_GATEWAY_SERVICE_HOST=localhost
+      -  RAS_API_GATEWAY_SERVICE_HOST=api-gateway
       -  RAS_API_GATEWAY_SERVICE_PORT=8083
       -  RAS_API_GATEWAY_SERVICE_PROTOCOL=http
       -  RM_IAC_SERVICE_HOST=iac
@@ -87,6 +87,9 @@ services:
       -  RM_SURVEY_SERVICE_HOST=survey
       -  RM_SURVEY_SERVICE_PORT=8080
       -  RM_SURVEY_SERVICE_PROTOCOL=http
+      -  RAS_SECURE_MESSAGE_SERVICE_HOST=secure-message
+      -  RAS_SECURE_MESSAGE_SERVICE_PORT=5050
+      -  RAS_SECURE_MESSAGE_SERVICE_PROTOCOL=http
       -  FS_DEV_PORT=5001
       -  SECURITY_USER_NAME=${SECURITY_USER_NAME}
       -  SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
@@ -101,14 +104,16 @@ services:
       - "${COLLECTION_INSTRUMENT_PORT}:${COLLECTION_INSTRUMENT_PORT}"
     environment:
       - db_port=${POSTGRES_PORT}
-      - API_GATEWAY_CASE_URL=http://localhost:8171/cases/
-      - API_GATEWAY_COLLECTION_EXERCISE_URL=http://localhost:8145/collectionexercises/
-      - API_GATEWAY_SURVEY_SERVICE_URL=http://localhost:8085/surveys/
-      - RABBITMQ_AMQP=amqp://guest:guest@localhost:6672
+      - API_GATEWAY_CASE_URL=http://casesvc:8171/cases/
+      - API_GATEWAY_COLLECTION_EXERCISE_URL=http://collex:8145/collectionexercises/
+      - API_GATEWAY_SURVEY_SERVICE_URL=http://survey:8080/surveys/
+      - RABBITMQ_AMQP=amqp://guest:guest@rabbitmq:5672
       - SECURITY_USER_NAME=${SECURITY_USER_NAME}
       - SECURITY_USER_PASSWORD=${SECURITY_USER_PASSWORD}
+      - JSON_SECRET_KEYS=${JSON_SECRET_KEYS}
     networks:
       - rasdockerdev_default
+      - rmdockerdev_default
 
   backstage:
     container_name: backstage

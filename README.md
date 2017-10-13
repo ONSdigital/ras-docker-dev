@@ -43,11 +43,12 @@ Docker development environment for RAS
   ```
 
 
-## Dependencies
-The scripts work on the expectation that the preceding layers are up and working
-
-RM -> RAS
-
-To close them down run the down scripts in the reverse order
-
- RAS -> RM
+## Testing the installation
+  
+### IAC Activation
+  The installation uploads the required data to run through a user journey. It requires activation of the iac ﻿4kyznty4fw3s, in the rm-postgres DB in iac.iac. This is done by toggling the active boolean.
+  
+  The rest of the test data is valid for a run through of an entire user journey. 
+ 
+###  Activating the email
+   The activation url for email can be pulled from the party-service logs, append the url to the frontstage location and hit from a browser to finish activation.

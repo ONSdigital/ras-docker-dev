@@ -7,8 +7,3 @@ services:
    - "${EX_POSTGRES_PORT}:${POSTGRES_PORT}"
   environment:
     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
- ras-rabbitmq:
-  container_name: ras-rabbitmq
-  image: rabbitmq:3.6.10-management
-  ports:
-    - "17671-17672:15671-15672"
