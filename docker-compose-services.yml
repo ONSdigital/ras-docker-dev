@@ -3,7 +3,7 @@ services:
 
   api-gateway:
     container_name: api-gateway
-    image: jwgwalton/ras-api-gateway
+    image: sdcplatform/ras-api-gateway
     ports:
       - "${GATEWAY_PORT}:${GATEWAY_PORT}"
     environment:
@@ -14,7 +14,7 @@ services:
 
   party-service:
     container_name: party-service
-    image: jwgwalton/ras-party
+    image: sdcplatform/ras-party
     ports:
       - "${PARTY_PORT}:${PARTY_PORT}"
     environment:
@@ -36,7 +36,7 @@ services:
 
   secure-message-service:
     container_name: secure-message
-    image: jwgwalton/ras-secure-message
+    image: sdcplatform/ras-secure-message
     ports:
       - "${SECURE_MESSAGE_PORT}:${SECURE_MESSAGE_PORT}"
     environment:
@@ -49,7 +49,7 @@ services:
 
   frontstage:
     container_name: frontstage
-    image: jwgwalton/ras-frontstage
+    image: sdcplatform/ras-frontstage
     ports:
       - "${FRONTSTAGE_PORT}:${FRONTSTAGE_PORT}"
     environment:
@@ -99,7 +99,7 @@ services:
 
   collection-instrument-service:
     container_name: collection-instrument
-    image: jwgwalton/ras-collection-instrument
+    image: sdcplatform/ras-collection-instrument
     ports:
       - "${COLLECTION_INSTRUMENT_PORT}:${COLLECTION_INSTRUMENT_PORT}"
     environment:
@@ -117,7 +117,7 @@ services:
 
   backstage:
     container_name: backstage
-    image: jwgwalton/ras-backstage
+    image: sdcplatform/ras-backstage
     ports:
       - "${BACKSTAGE_PORT}:${BACKSTAGE_PORT}"
     environment:
@@ -128,7 +128,7 @@ services:
 
   oauth2-service:
     container_name: oauth2-service
-    image: jwgwalton/django-oauth2-test:docker
+    image: sdcplatform/django-oauth2-test
     ports:
       - 8040:8040
     environment:
