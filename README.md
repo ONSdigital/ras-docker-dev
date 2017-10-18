@@ -7,6 +7,7 @@ Docker development environment for RAS
 ##  Clone and run the rm-docker-dev environment
 
 ```
+   git clone  https://github.com/ONSdigital/rm-docker-dev.git
    git clone  https://github.com/ONSdigital/ras-docker-dev.git
 ```
 
